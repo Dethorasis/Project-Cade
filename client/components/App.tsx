@@ -1,3 +1,5 @@
+import Sketch from 'react-p5'
+
 function App() {
   return (
     <div>
