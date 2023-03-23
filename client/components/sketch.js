@@ -1,7 +1,8 @@
 function sketch(p) {
   let xPos = p.width / 2
   let yPos = p.height / 2
-  let speed = 10
+  let speed = [0, 0]
+  let acceleration = 0.6
 
   p.setup = function () {
     p.createCanvas(1600, 800)
@@ -13,17 +14,24 @@ function sketch(p) {
     p.background(105, 105, 105)
     p.ellipse(xPos, yPos, 40)
 
+    //Drag
+    speed[0] = speed[0] * 0.95
+    speed[1] = speed[1] * 0.95
+
+    //Speed
+    xPos += speed[0]
+    yPos += speed[1]
     if (p.keyIsDown(p.LEFT_ARROW)) {
-      xPos -= speed
+      speed[0] -= acceleration
     }
     if (p.keyIsDown(p.RIGHT_ARROW)) {
-      xPos += speed
+      speed[0] += acceleration
     }
     if (p.keyIsDown(p.DOWN_ARROW)) {
-      yPos += speed
+      speed[1] += acceleration
     }
     if (p.keyIsDown(p.UP_ARROW)) {
-      yPos -= speed
+      speed[1] -= acceleration
     }
   }
 }
