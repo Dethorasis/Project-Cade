@@ -1,16 +1,23 @@
 function sketch(p) {
-  let xPos = p.width / 2
-  let yPos = p.height / 2
+  let xPos
+  let yPos
   let speed = [0, 0]
   let acceleration = 0.6
 
+  // Set up canvas
   p.setup = function () {
     p.createCanvas(1600, 800)
+
+    // Positions the ellipse at the center of the canvas
+    xPos = p.width / 2
+    yPos = p.height / 2
+
     p.strokeWeight(4)
     p.rect(0, 0, p.width, p.height)
   }
-
+  // Draw canvas (60times per second)
   p.draw = function () {
+    console.log('xPos', xPos, 'yPos', yPos)
     p.background(105, 105, 105)
     p.ellipse(xPos, yPos, 40)
 
