@@ -1,4 +1,10 @@
-import { PreventBacteriaEscaping } from './bacteria'
+import { preventBacteriaEscaping } from './bacteria'
+import {
+  leftBacteriaMovement,
+  rightBacteriaMovement,
+  upBacteriaMovement,
+  downBacteriaMovement,
+} from './bacteria'
 
 function sketch(p) {
   let xPos
@@ -30,23 +36,17 @@ function sketch(p) {
     // --Speed--
     xPos += speed[0]
     yPos += speed[1]
-    if (p.keyIsDown(p.LEFT_ARROW)) {
-      speed[0] -= acceleration
-    }
-    if (p.keyIsDown(p.RIGHT_ARROW)) {
-      speed[0] += acceleration
-    }
-    if (p.keyIsDown(p.DOWN_ARROW)) {
-      speed[1] += acceleration
-    }
-    if (p.keyIsDown(p.UP_ARROW)) {
-      speed[1] -= acceleration
-    }
 
-    // --Crude functionality to keep ellipse in the canvas--
+    // -- Functions to control bacteria
+    // -- TODO: Find out how to put this all in one function, without it breaking
+    leftBacteriaMovement(p, speed, acceleration)
+    rightBacteriaMovement(p, speed, acceleration)
+    upBacteriaMovement(p, speed, acceleration)
+    downBacteriaMovement(p, speed, acceleration)
 
-    xPos = PreventBacteriaEscaping(xPos, 0, p.width)
-    yPos = PreventBacteriaEscaping(yPos, 0, p.height)
+    // --Crude functionality to keep bacteria in the canvas--
+    xPos = preventBacteriaEscaping(xPos, 0, p.width)
+    yPos = preventBacteriaEscaping(yPos, 0, p.height)
   }
 }
 
