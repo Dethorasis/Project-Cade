@@ -22,11 +22,22 @@ function sketch(p) {
 
     p.strokeWeight(4)
     p.rect(0, 0, p.width, p.height)
+
+    let dots = []
+    for (let i = 0; i < 5; i++) {
+      dots.push(
+        p.ellipse(
+          Math.floor(Math.random() * 1600),
+          Math.floor(Math.random() * 800),
+          20
+        )
+      )
+    }
   }
   // --Draw canvas (60times per second)--
   p.draw = function () {
     console.log('xPos', xPos, 'yPos', yPos)
-    p.background('#287c37')
+    // p.background('#287c37')
     p.ellipse(xPos, yPos, 30)
 
     // --Drag--
