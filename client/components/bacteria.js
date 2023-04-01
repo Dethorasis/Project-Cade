@@ -32,3 +32,20 @@ export function downBacteriaMovement(p, speed, acceleration) {
     return (speed[1] += acceleration)
   }
 }
+
+//Creates 5 dots at hard coded positions on the canvas
+// --TODO: If condition = true, push dot at random location on screen THEN
+// -- set condition = false, if dot is eaten, set to true
+
+export function createDots(p) {
+  let dots = []
+  for (let i = 0; i < 2; i++) {
+    p.fill('orange')
+    dots.push(p.ellipse(300, 400, 20))
+    dots.push(p.ellipse(1500, 500, 30))
+    dots.push(p.ellipse(1200, 230, 30))
+    dots.push(p.ellipse(600, 500, 30))
+    dots.push(p.ellipse(456, 730, 30))
+  }
+  return dots
+}
